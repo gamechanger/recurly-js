@@ -488,7 +488,8 @@ function pullAccountFields($form, account, options, pull) {
     account.companyName = pull.field($form, '.contact_info .company_name');
     account.email = pull.field($form, '.email', V(R.isNotEmpty), V(R.isValidEmail));
     account.code = options.accountCode ||
-        (options.account && (options.account.code || options.account.accountCode));
+        (options.account && (options.account.code || options.account.accountCode)) ||
+        (options.account && options.account.codeCallback && options.account.codeCallback());
 }
 
 
