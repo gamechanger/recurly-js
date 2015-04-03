@@ -26,7 +26,17 @@ DOM_SOURCES = $(addprefix src/dom/, \
 	terms_of_service.jade \
 )
 
-all: node_modules build build/recurly.min.js
+MOBILE_DOM_SOURCES = $(addprefix src/mobile_dom/, \
+	contact_info_fields.jade \
+	billing_info_fields.jade \
+	subscribe_form.jade \
+	update_billing_info_form.jade \
+	one_time_transaction_form.jade \
+	terms_of_service.jade \
+)
+
+
+all: node_modules build build/recurly.min.js build/recurly_mobile.min.js
 
 build:
 	mkdir -p build
@@ -37,6 +47,13 @@ build/recurly.js: $(JS_SOURCES) $(DOM_SOURCES)
 build/recurly.min.js: build/recurly.js
 	rm -f build/recurly.min.js
 	$(YUI_COMPRESSOR) build/recurly.js -o build/recurly.min.js
+
+build/recurly_mobile.js: $(JS_SOURCES) $(MOBILE_DOM_SOURCES)
+	$(COMPILER) $^ > $@
+
+build/recurly_mobile.min.js: build/recurly_mobile.js
+	rm -f build/recurly_mobile.min.js
+	$(YUI_COMPRESSOR) build/recurly_mobile.js -o build/recurly_mobile.min.js
 
 themes/default/recurly.css: themes/default/recurly.styl
 	$(STYLUS) $^

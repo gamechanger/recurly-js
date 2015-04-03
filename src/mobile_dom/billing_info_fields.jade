@@ -1,0 +1,58 @@
+ul.credit_card
+  .field.first_name
+    label First Name
+    input(type="text")
+
+  .field.last_name
+    label Last Name
+    input(type="text")
+
+  li
+    .field.card_number
+      label Credit Card Number
+      input(type="text")
+  li
+    .field.cvv
+      label CVV
+      input(type="text")
+
+  li.accepted_cards.moreBelow
+  li.security Secure
+
+  li.field.expires
+    label Expires
+    .month
+      select
+        include months.jade
+    .year
+      select
+
+ul.address.only_zipstreet
+  li.field.address1
+    label Address
+    input(type="text")
+  
+  li.field.address2
+    label Apt/Suite
+    input(type="text")
+  
+  li.hide.city
+    label City
+    input(type="text")
+
+  li.state_zip
+    .hide.state
+      label State/Province
+      input(type="text")
+
+    .field.zip
+      label Zip/Postal
+      input(type="text")
+  
+  li.hide.country
+    select
+      include countries.jade
+          
+.field.vat_number
+  label VAT Number
+  input(type="text")
