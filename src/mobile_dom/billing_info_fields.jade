@@ -10,11 +10,11 @@ ul.credit_card
   li
     .field.card_number
       label Credit Card Number
-      input(type="text")
+      input(type="text", pattern="[0-9]*")
   li
     .field.cvv
       label CVV
-      input(type="text")
+      input(type="text", pattern="[0-9]*")
 
   li.field.expires
     label Expires
